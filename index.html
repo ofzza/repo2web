@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+        <script type="text/javascript">
+            window.addEventListener('load', () => {
+
+                $.ajax({
+                    method: 'GET',
+                    url: 'https://raw.githubusercontent.com/ofzza/enTT/master/README.md',
+                    dataType: 'text',
+                    error: () => {
+                        console.log('error');
+                    },
+                    success: (data) => {
+                        document.getElementById('out').innerHTML = data;
+                    }
+                })
+
+            });
+        </script>
+    </head>
+    <body>
+        <textarea id="out" style=" position: absolute; width: calc(100% - 20px); border: 0px; padding: 10px; top: 0; bottom: 0; left: 0; right: 0; ">
+            Loading ...
+        </textarea>
+    </body>
+</html>
