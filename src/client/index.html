@@ -8,13 +8,16 @@
 
                 $.ajax({
                     method: 'GET',
-                    url: 'https://raw.githubusercontent.com/ofzza/repo2web/master/README.md',
+                    url: 'https://raw.githubusercontent.com/ofzza/repo2web/testing/clientside-seo/README.md',
                     dataType: 'text',
                     error: () => {
                         console.log('error');
                     },
                     success: (data) => {
-                        document.getElementById('out').innerHTML = data;
+                        // Set title
+                        document.getElementsByTagName('title')[0].innerHTML = data.split('-')[1];
+                        // Set content
+                        document.body.innerHTML = data.replace(/\n/g, '<br />');
                     }
                 })
 
@@ -22,8 +25,6 @@
         </script>
     </head>
     <body>
-        <textarea id="out" style=" position: absolute; width: calc(100% - 20px); border: 0px; padding: 10px; top: 0; bottom: 0; left: 0; right: 0; ">
-            Loading ...
-        </textarea>
+        Loading repo-2-web content!
     </body>
 </html>
