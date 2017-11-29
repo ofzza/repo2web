@@ -15,7 +15,7 @@
                     },
                     success: (data) => {
                         // Set title
-                        document.getElementsByTagName('title')[0].innerHTML = data.split('-')[1];
+                        document.getElementsByTagName('title')[0].innerHTML = data.split(':')[1];
                         // Set content
                         document.body.innerHTML = data.replace(/\n/g, '<br />');
                     }
