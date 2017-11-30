@@ -1,2 +1,2 @@
-# boilerplate-node
-NodeJS Project boilerplate
+# repo2web
+Simple repository backed CMS

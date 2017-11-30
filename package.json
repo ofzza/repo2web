@@ -1,0 +1,47 @@
+{
+  "name": "repo2web",
+  "version": "0.0.1",
+  "description": "Simple repository backed CMS",
+  "main": "",
+  "scripts": {
+    "test": "gulp test && node ./tests",
+    "start": "gulp default && node ./dist",
+    "production": "gulp build --production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/repo2web/repo2web.git"
+  },
+  "keywords": [
+    "repo2web"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/repo2web/repo2web/issues"
+  },
+  "homepage": "https://github.com/repo2web/repo2web#readme",
+  "devDependencies": {
+    "babel-core": "*",
+    "babel-preset-esnext": "*",
+    "colors": "^1.1.2",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-babel": "^7.0.0",
+    "gulp-clean": "^0.3.2",
+    "gulp-clean-css": "^3.9.0",
+    "gulp-eslint": "^4.0.0",
+    "gulp-html-lint": "0.0.2",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-jscs": "^4.0.0",
+    "gulp-less": "^3.3.2",
+    "gulp-lesshint": "^4.0.0",
+    "gulp-minify": "^2.1.0",
+    "gulp-mocha": "^4.0.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-sass-lint": "^1.3.4",
+    "gulp-scss-lint": "^0.5.0",
+    "gulp-stylelint": "^5.0.0",
+    "lodash": "^4.17.4"
+  },
+  "dependencies": {}
+}
