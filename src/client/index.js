@@ -5,6 +5,7 @@
 // Dependencies
 import _ from 'lodash';
 import $ from 'jquery';
+import showdown from 'showdown';
 import { ConfigurationService, GitHubService } from './script/services';
 import { GitHubRepositoryDirectory, GitHubRepositoryFile } from '../common/script/services/github/data';
 
@@ -19,16 +20,19 @@ $(document).ready(async () => {
     console.log('REPO:', GitHubService.tree);
 
     // Router(ish)
+    const converter = new showdown.Converter();
     async function handleLocationChange () {
       let parsedLocation = window.location.href.split('#'),
           path = (parsedLocation.length > 1 ? parsedLocation[1] : null),
           resource = GitHubService.tree.find(path);
       if (!resource) {
-        document.getElementsByTagName('textarea')[0].value = 'Resource not found!';
+        document.getElementById('target').innerHTML = 'Resource not found!';
       } else if (resource instanceof GitHubRepositoryDirectory) {
-        document.getElementsByTagName('textarea')[0].value = 'Resource is a directory!';
+        document.getElementById('target').innerHTML = 'Resource is a directory!';
       } else if (resource instanceof GitHubRepositoryFile) {
-        document.getElementsByTagName('textarea')[0].value = await GitHubService.fetchResource(path);
+        let md = await GitHubService.fetchResource(path),
+            html = converter.makeHtml(md);
+        document.getElementById('target').innerHTML = html;
       }
       console.log('> Loc', path, resource);
     };
