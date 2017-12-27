@@ -1,5 +1,5 @@
 { 
-  "safeContextKeyword"                      : ["self"],
+  "safeContextKeyword"                      : false,
   "validateLineBreaks"                      : "LF",
   "validateIndentation"                     : 2,
   "validateParameterSeparator"              : ", ",

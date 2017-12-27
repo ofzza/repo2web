@@ -35,7 +35,7 @@
   "label-req-for": false,
   "lang-style": "case",
   "line-end-style": "lf",
-  "line-max-len": 80,
+  "line-max-len": 160,
   "line-max-len-ignore-regex": false,
   "maxerr": 32,
   "raw-ignore-regex": "\\<\\!-- htmllint ignore --\\>[^]*?\\<\\!-- htmllint unignore --\\>",
