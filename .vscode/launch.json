@@ -20,6 +20,7 @@
           "NODE_ENV": "development"
       },
       "console": "internalConsole",
+      "outputCapture": "std",
       "useWSL": false
     },
     {
@@ -61,6 +62,7 @@
           "NODE_ENV": "development"
       },
       "console": "internalConsole",
+      "outputCapture": "std",
       "useWSL": false
     },
     {
@@ -81,6 +83,7 @@
           "NODE_ENV": "development"
       },
       "console": "internalConsole",
+      "outputCapture": "std",
       "useWSL": true
     },
 
@@ -105,6 +108,7 @@
           "NODE_ENV": "development"
       },
       "console": "internalConsole",
+      "outputCapture": "std",
       "useWSL": false
     },
     {
@@ -127,6 +131,7 @@
           "NODE_ENV": "development"
       },
       "console": "internalConsole",
+      "outputCapture": "std",
       "useWSL": true
     }
   ]
