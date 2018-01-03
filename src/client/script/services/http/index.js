@@ -33,7 +33,6 @@ export class HttpServiceClass extends HttpServiceBase {
         data: payload,
         headers,
         success: (data, textStatus, jqXHR) => {
-          console.log(data, textStatus, jqXHR);
           resolve(new HttpSuccessResponse({
             code: jqXHR.status,
             headers: jqXHR.getAllResponseHeaders().split('\n'),
@@ -41,7 +40,6 @@ export class HttpServiceClass extends HttpServiceBase {
           }));
         },
         error: (jqXHR, textStatus, err) => {
-          console.log(jqXHR, textStatus, err);
           resolve(new HttpErrorResponse({
             code: jqXHR.status,
             headers: jqXHR.getAllResponseHeaders().split('\n'),

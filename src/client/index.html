@@ -4,56 +4,15 @@
         <title> Repo-2-Web </title>
         <script github-username="ofzza" github-repository="repo2web-test-content" github-branch="master"
                 src="./index.js"></script>
-        <!--
-        <script type="text/javascript">
-            window.addEventListener('load', () => {
-
-                // Initialize content
-                let content = '';
-
-                // Get site-map
-                $.ajax({
-                    method: 'GET',
-                    url: 'https://api.github.com/repos/ofzza/repo2web-test-content/git/trees/5e0301420fad6601037131315b87455eaa41a395?recursive=1',
-                    dataType: 'text',
-                    error: () => {
-                        console.log('error');
-                    },
-                    success: (data) => {
-                        document.getElementById('out').innerHTML = (content += data);
-                    }
-                })
-
-                // Get page
-                $.ajax({
-                    method: 'GET',
-                    url: 'https://raw.githubusercontent.com/ofzza/repo2web/master/README.md',
-                    dataType: 'text',
-                    error: () => {
-                        console.log('error');
-                    },
-                    success: (data) => {
-                        document.getElementById('out').innerHTML = (content = data + '\n\n' + content);
-                    }
-                })
-
-            });
-        </script>
-        -->
     </head>
     <body>
-        <ul>
-            <li><a href="#/"> Home </a></li>
-            <li><a href="#/articles"> &gt; Articles </a></li>
-            <li><a href="#/articles/music"> &gt; Articles &gt; Music </a></li>
-            <li><a href="#/articles/music/i-play-the-drums.md"> &gt; Articles &gt; Music &gt; Drums </a></li>
-            <li><a href="#/articles/music/radiohead-kicks-ass.md"> &gt; Articles &gt; Music &gt; RadioHead </a></li>
-            <li><a href="#/articles/technology"> &gt; Articles &gt; Tech </a></li>
-            <li><a href="#/articles/technology/working-on-repo2web.md"> &gt; Articles &gt; Tech &gt; Repo-2-Web </a></li>
-            <li><a href="#/bio.md"> &gt; Bio </a></li>
-            <li><a href="#/contact-me.md"> &gt; Contact </a></li>
-        </ul>
-        <div id="target" style=" position: absolute; width: calc(100% - 20px); border: 0px; padding: 10px; top: 220px; bottom: 0; left: 0; right: 0; border: 1px solid #aaa; ">
+        <div>
+            <a href="#!/">Home</a> | 
+            <a href="#!/articles">Articles</a> | 
+            <a href="#!/bio.md">Bio</a> | 
+            <a href="#!/contact-me.md">Contact</a>
+        </div>
+        <div id="target" style=" position: absolute; width: calc(100% - 20px); padding: 10px; top: 30px; bottom: 0; left: 0; right: 0; border-top: 2px solid #aaa; ">
             Loading ...
         </div>
     </body>

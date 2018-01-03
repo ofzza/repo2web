@@ -8,7 +8,7 @@ const connect = require('gulp-connect');
 // Initialize tasks
 module.exports = (gulp) => {
 
-  // JSCS code-style task
+  // HTTP server task
   gulp.task('server', () => {
     return connect.server({
       port: 3001,

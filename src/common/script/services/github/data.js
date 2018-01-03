@@ -15,13 +15,34 @@ export class GitHubRepositoryResource {
    * @param {any} name Item name
    * @param {any} sha Item SHA
    * @param {any} url Item URL
+   * @param {any} parent Reference to parent resource
    * @memberof GitHubRepositoryResource
    */
-  constructor ({ name, sha, url } = {}) {
+  constructor ({ name, sha, url, parent = null } = {}) {
+    // Set properties
+    this.parent = parent;
     this.name = name;
     this.sha = sha;
     this.url = url;
   }
+
+  /**
+   * Composes full resource path
+   * @readonly
+   * @memberof GitHubRepositoryResource
+   */
+  get path () {
+    // Get all parents and compose path
+    let parent = this.parent,
+        path = [];
+    while (parent) {
+      if (parent.name) { path.push(parent.name); }
+      parent = parent.parent;
+    }
+    // Return full path
+    return `${ _.reverse(path).join('/') }/${ this.name }`;
+  }
+
 }
 /**
  * GitHub repository Directory representation
@@ -32,10 +53,11 @@ export class GitHubRepositoryDirectory extends GitHubRepositoryResource {
    * Creates an instance of GitHubRepositoryDirectory.
    * @param {any} name Directory name
    * @param {any} res Partial response from HTTP call to GitHub API's repo tree endpoint
+   * @param {any} parent Reference to parent resource
    * @memberof GitHubRepositoryDirectory
    */
-  constructor ({ name, res } = {}) {
-    super({ name: name || null, });
+  constructor ({ name, res, parent = null } = {}) {
+    super({ name: name || null, parent });
 
     // Set SHA and url
     let currentDirectoryResource = _.find(res, (item) => { return !item.path; });
@@ -52,7 +74,7 @@ export class GitHubRepositoryDirectory extends GitHubRepositoryResource {
       // Check item type
       if (path.length === 1 && item.type === 'blob') {
         // Store direct child file
-        children.push(new GitHubRepositoryFile(item));
+        children.push(new GitHubRepositoryFile({ res: item, parent: this }));
       }
       // Return children
       return children;
@@ -73,7 +95,7 @@ export class GitHubRepositoryDirectory extends GitHubRepositoryResource {
     }, {});
     // Store direct child directories
     _.forEach(dirs, (res, name) => {
-      this.children.push(new GitHubRepositoryDirectory({ name, res }));
+      this.children.push(new GitHubRepositoryDirectory({ name, res, parent: this }));
     });
 
   }
@@ -86,10 +108,12 @@ export class GitHubRepositoryFile extends GitHubRepositoryResource {
   /**
    * Creates an instance of GitHubRepositoryFile.
    * @param {any} res Partial response from HTTP call to GitHub API's repo tree endpoint
+   * @param {any} parent Reference to parent resource
    * @memberof GitHubRepositoryFile
    */
-  constructor (res) {
+  constructor ({ res, parent = null } = {}) {
     super({
+      parent,
       name: _.last(res.path.split('/')),
       sha: res.sha,
       url: res.url

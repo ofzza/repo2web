@@ -167,6 +167,4 @@ export class GitHubServiceClass {
     return res.data;
   }
 
-  // https://raw.githubusercontent.com/ofzza/repo2web-test-content/5e0301420fad6601037131315b87455eaa41a395/articles/music/i-play-the-drums.md
-
 }
