@@ -5,7 +5,7 @@
 // Dependencies
 import _ from 'lodash';
 import $ from 'jquery';
-import { ConfigurationService, GitHubService, RouterService } from './script/services';
+import { ConfigurationService, GitHubService, RouterService, DomService } from './script/services';
 
 // Wait for page load event
 $(document).ready(async () => {
@@ -15,8 +15,10 @@ $(document).ready(async () => {
     await ConfigurationService.initialize();
     // Fetch GituUb repository
     await GitHubService.initialize();
+    // Initialize DOM monitoring
+    await DomService.initialize();
     // Initialize routing
-    await RouterService.init({
+    await RouterService.initialize({
       hash: true
     });
 

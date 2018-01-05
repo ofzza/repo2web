@@ -4,9 +4,9 @@
 
 // Dependencies
 import _ from 'lodash';
+import $ from 'jquery';
 import showdown from 'showdown';
-import { GitHubService, NullRenderer, FileRenderer, DirectoryRenderer } from '../';
-import { GitHubRepositoryDirectory, GitHubRepositoryFile } from '../../../../common/script/services/github/data';
+import { DomService, GitHubService } from '../';
 
 /**
  * Handles client-side routing
@@ -20,7 +20,7 @@ export class RouterServiceClass {
    * @param {any} hash If true, client-side only routing will be used with route paths behind "#!" in the URL
    * @memberof RouterServiceClass
    */
-  async init ({ hash = true } = {}) {
+  async initialize ({ hash = true } = {}) {
 
     // Set properties
     this.hash = hash;
@@ -43,17 +43,9 @@ export class RouterServiceClass {
         resource = GitHubService.tree.find(path);
 
     // Render resource
-    let target = document.getElementById('target');
-    if (!resource) {
-      // Render a missing 404 resource
-      (new NullRenderer({ target, resource })).start();
-    } else if (resource instanceof GitHubRepositoryFile) {
-      // Render an file resource
-      (new FileRenderer({ target, resource })).start();
-    } else if (resource instanceof GitHubRepositoryDirectory) {
-      // Render a directory resource
-      (new DirectoryRenderer({ target, resource })).start();
-    }
+    _.forEach(DomService.routingHostElements, (target) => {
+      target.render(resource);
+    });
 
   }
 

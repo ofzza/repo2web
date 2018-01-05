@@ -3,9 +3,8 @@
 // =====================================================================================================================
 
 // Dependencies
-import _ from 'lodash';
 import $ from 'jquery';
-import { GitHubService, Renderer } from '../';
+import { Renderer } from '../';
 
 /**
  * Handles client-side rendering
@@ -30,7 +29,7 @@ export default class NullRenderer extends Renderer {
    */
   _start () {
     // Fetch file resource and render
-    setTimeout(async () => {
+    setTimeout(() => {
       if (this.element) {
         $(this.element).html('404, RESOURCE NOT FOUND!');
       }

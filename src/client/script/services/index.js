@@ -7,6 +7,7 @@ export { default as ConfigurationService, ConfigurationServiceClass } from './co
 export { default as CachingService, CachingServiceClass } from './cache';
 export { default as HttpService, HttpServiceClass } from './http';
 export { default as GitHubService, GitHubServiceClass } from './github';
+export { default as DomService, DomClass } from './dom';
 export { default as RouterService, RouterServiceClass } from './router';
 
 // Rendering
